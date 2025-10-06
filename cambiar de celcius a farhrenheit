@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+double celsius, fahrenheit;
+cout<<"Ingrese grados Celsius:";
+cin >>celsius;
+fahrenheit=(celcius*9/5)+32;
+cout<<celsius<<"°C equivalente a"<<fahrenheit<<"F"<<endl<<;
+
+cout<<"Ingrese grados <<<<<fahrenheit:;
+cin>>fahrenheit;
+celsius=(fahrenheit -32)*5/9;
+cout<<fahrenheit<<"|F equivalente a "<<celcius<<"°C"<<endl;
