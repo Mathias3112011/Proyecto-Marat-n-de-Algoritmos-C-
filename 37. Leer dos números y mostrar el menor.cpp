@@ -7,3 +7,4 @@ int main() {
     cout << (x < y ? x : y);
     return 0;
 }
+
