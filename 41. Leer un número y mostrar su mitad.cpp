@@ -7,3 +7,4 @@ int main() {
     cout << n / 2;
     return 0;
 }
+
