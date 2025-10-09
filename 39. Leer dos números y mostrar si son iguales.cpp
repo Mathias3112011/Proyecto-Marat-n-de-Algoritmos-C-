@@ -7,3 +7,4 @@ int main() {
     cout << (a == b ? "Iguales" : "Distintos");
     return 0;
 }
+
