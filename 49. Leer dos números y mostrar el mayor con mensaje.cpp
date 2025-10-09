@@ -7,3 +7,4 @@ int main() {
     cout << "El mayor es: " << (a > b ? a : b);
     return 0;
 }
+
