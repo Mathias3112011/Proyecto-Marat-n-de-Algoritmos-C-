@@ -3,38 +3,60 @@ Miselania Proyecto Maratón de Algoritmo C++
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <algorithm> // para sort
+#include <algorithm> // sort, greater
 
 using namespace std;
 
 int main() {
-    vector<int> numeros;
-    ifstream entrada("numeros.txt"); // archivo de entrada
-    ofstream salida("ordenados.txt"); // archivo de salida
-
+    vector<long long> numeros;            // acepta números grandes
+    ifstream entrada("numeros.txt");      
     if (!entrada) {
-        cout << "No se pudo abrir el archivo 'numeros.txt'." << endl;
+        cerr << "No se pudo abrir 'numeros.txt'." << endl;
         return 1;
     }
 
-    int num;
-    // Leer todos los números del archivo
-    while (entrada >> num) {
-        numeros.push_back(num);
+    long long n;
+    // lee números separados por espacios o líneas nuevas
+    while (entrada >> n) {
+        numeros.push_back(n);
     }
-
-    // Ordenar de menor a mayor
-    sort(numeros.begin(), numeros.end());
-
-    // Guardar los números ordenados en el archivo de salida
-    for (int n : numeros) {
-        salida << n << endl;
-    }
-
-    cout << "Los numeros han sido ordenados y guardados en 'ordenados.txt'." << endl;
-
     entrada.close();
+
+    if (numeros.empty()) {
+        cout << "El archivo 'numeros.txt' está vacío o no contiene números." << endl;
+        return 0;
+    }
+
+    // Mostrar antes de ordenar
+    cout << "Antes (orden en archivo): ";
+    for (size_t i = 0; i < numeros.size(); ++i) {
+        if (i) cout << ", ";
+        cout << numeros[i];
+    }
+    cout << endl;
+
+    // Ordenar de mayor a menor
+    sort(numeros.begin(), numeros.end(), greater<long long>());
+
+    // Mostrar después de ordenar
+    cout << "Después (de mayor a menor): ";
+    for (size_t i = 0; i < numeros.size(); ++i) {
+        if (i) cout << ", ";
+        cout << numeros[i];
+    }
+    cout << endl;
+
+    // Guardar en archivo de salida
+    ofstream salida("ordenados.txt");
+    if (!salida) {
+        cerr << "No se pudo crear 'ordenados.txt'." << endl;
+        return 1;
+    }
+    for (long long v : numeros) {
+        salida << v << '\n';
+    }
     salida.close();
 
+    cout << "Listo — resultado guardado en 'ordenados.txt'." << endl;
     return 0;
 }
